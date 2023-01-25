@@ -44,17 +44,17 @@ namespace Aggiunta_Array_e_funzioni
             array[0] = random.Next(min, max + 1);
             while (CurrentLenght != lenght)
             {
-                for (int i = CurrentLenght; i > 0; i--)
+                for (int i = CurrentLenght; i >= 0; i--)
                 {
                     temp = random.Next(min, max + 1);
                     if (temp > array[i])
                     {
-                        i = -1;
                         for (int j = CurrentLenght; j > i; j--)
                         {
                             array[j] = array[j+1];
                         }
                         array[i] = temp;
+                        i = -1;
                     }
                 }
                 CurrentLenght++;
