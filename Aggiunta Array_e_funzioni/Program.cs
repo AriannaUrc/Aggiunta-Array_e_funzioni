@@ -17,6 +17,17 @@ namespace Aggiunta_Array_e_funzioni
     internal class Program
     {
 
+        static int CaricamentoRandom(ref int[] array, int lenght, int max, int min)
+        {
+            Random random = new Random();
+            for (int i = 0; i < lenght - 1; i++)
+            {
+                array[i] = random.Next(min, max + 1);
+            }
+            return 0;
+        }
+
+       
         static void Main(string[] args)
         {
             int[] array = new int[100];
