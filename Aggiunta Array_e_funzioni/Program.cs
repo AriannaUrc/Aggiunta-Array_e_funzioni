@@ -100,7 +100,7 @@ namespace Aggiunta_Array_e_funzioni
                     case 0:
                         for (int i = 0; i < lenght; i++)
                         {
-                            Console.Write(array[i]);
+                            Console.Write(array[i]+"-");
                         }
                         
                         break;
