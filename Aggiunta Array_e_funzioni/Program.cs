@@ -27,7 +27,19 @@ namespace Aggiunta_Array_e_funzioni
             return 0;
         }
 
-       
+        static int CambiaLunghezza(ref int[] array, ref int lenght, int nextLenght)
+        {
+            for (int i = lenght-1; i < nextLenght - 1; i++)
+            {
+                array[lenght - 1] = 0;
+            }
+            lenght = nextLenght;
+            return 0;
+        }
+
+        
+
+
         static void Main(string[] args)
         {
             int[] array = new int[100];
