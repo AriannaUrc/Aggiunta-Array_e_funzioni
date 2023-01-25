@@ -37,15 +37,49 @@ namespace Aggiunta_Array_e_funzioni
             return 0;
         }
 
-        
+        static int CaricamentoOrdinato(ref int[] array, int lenght, int max, int min)
+        {
+            int CurrentLenght=1, temp;
+            Random random = new Random();
+            array[0] = random.Next(min, max + 1);
+            while (CurrentLenght != lenght)
+            {
+                for (int i = CurrentLenght; i > 0; i--)
+                {
+                    temp = random.Next(min, max + 1);
+                    if (temp > array[i])
+                    {
+                        i = -1;
+                        for (int j = CurrentLenght; j > i; j--)
+                        {
+                            array[j] = array[j+1];
+                        }
+                        array[i] = temp;
+                    }
+                }
+                CurrentLenght++;
+            }
+
+            return 0;
+        }
 
 
         static void Main(string[] args)
         {
             int[] array = new int[100];
-            int menuChoice, lenght;
+            int menuChoice, lenght, max, min, nextLenght;
             string userInput;
             bool continuare;
+
+            Console.WriteLine("inserire lunghezza");
+            lenght = int.Parse(Console.ReadLine());
+            Console.WriteLine("inserire massimo");
+            max = int.Parse(Console.ReadLine());
+            Console.WriteLine("inserire minimo");
+            min = int.Parse(Console.ReadLine());
+            CaricamentoRandom(ref array, lenght, max, min);
+
+
             Console.WriteLine("Vuoi continuare ad usare il programma? yes o no");
             userInput = Console.ReadLine();
             if (userInput.ToLower() == "yes")
@@ -59,24 +93,42 @@ namespace Aggiunta_Array_e_funzioni
 
             while (continuare)
             {
-                Console.WriteLine("Hai tre opzioni: \n1 - caricamento di un array di N elementi con numeri random compresi tra X e Y scelti dall'utente\n2 - troncamento di un array, data una dimensione Z inserita dall'utente (l'array viene ridotto alla dimensione Z)\n3 - aggiunta ordinata di numeri in un array (inserire il valore nella posizione corretta, mantenendo l'ordinamento ad ogni aggiunta)");
+                Console.WriteLine("\nHai tre opzioni: \n1 - caricamento di un array di N elementi con numeri random compresi tra X e Y scelti dall'utente\n2 - troncamento di un array, data una dimensione Z inserita dall'utente (l'array viene ridotto alla dimensione Z)\n3 - aggiunta ordinata di numeri in un array (inserire il valore nella posizione corretta, mantenendo l'ordinamento ad ogni aggiunta)");
                 menuChoice = int.Parse(Console.ReadLine());
                 switch (menuChoice)
                 {
                     case 0:
-                        Console.WriteLine();
+                        for (int i = 0; i < lenght; i++)
+                        {
+                            Console.Write(array[i]);
+                        }
+                        
                         break;
 
                     case 1:
-                        Console.WriteLine();
+                        Console.WriteLine("inserire lunghezza");
+                        lenght=int.Parse(Console.ReadLine());
+                        Console.WriteLine("inserire massimo");
+                        max = int.Parse(Console.ReadLine());
+                        Console.WriteLine("inserire minimo");
+                        min = int.Parse(Console.ReadLine());
+                        CaricamentoRandom(ref array, lenght, max, min);
                         break;
 
                     case 2:
-                        Console.WriteLine();
+                        Console.WriteLine("inserire nuova lughezza");
+                        nextLenght = int.Parse(Console.ReadLine());
+                        CambiaLunghezza(ref array, ref lenght, nextLenght);
                         break;
 
                     case 3:
-                        Console.WriteLine();
+                        Console.WriteLine("inserire lunghezza");
+                        lenght = int.Parse(Console.ReadLine());
+                        Console.WriteLine("inserire massimo");
+                        max = int.Parse(Console.ReadLine());
+                        Console.WriteLine("inserire minimo");
+                        min = int.Parse(Console.ReadLine());
+                        CaricamentoOrdinato(ref array, lenght, max, min);
                         break;
                 }
             }
