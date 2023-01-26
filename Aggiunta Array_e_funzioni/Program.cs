@@ -54,6 +54,7 @@ namespace Aggiunta_Array_e_funzioni
                         {
                             array[k] = array[k + 1];
                         }
+                        array[j] = temp;
                         j = CurrentLenght;
                     }
                 }
