@@ -20,7 +20,7 @@ namespace Aggiunta_Array_e_funzioni
         static int CaricamentoRandom(ref int[] array, int lenght, int max, int min)
         {
             Random random = new Random();
-            for (int i = 0; i < lenght - 1; i++)
+            for (int i = 0; i < lenght; i++)
             {
                 array[i] = random.Next(min, max + 1);
             }
@@ -37,30 +37,29 @@ namespace Aggiunta_Array_e_funzioni
             return 0;
         }
 
-        static int CaricamentoOrdinato(ref int[] array, int lenght, int max, int min)
+        static void CaricamentoOrdinato(ref int[] array, int lenght, int max, int min)
         {
-            int CurrentLenght=1, temp;
-            Random random = new Random();
-            array[0] = random.Next(min, max + 1);
-            while (CurrentLenght != lenght)
+            int CurrentLenght = 1, temp;
+            Random r = new Random();
+            array[0] = r.Next(min, max + 1);
+
+            for (int i = 1; i < lenght; i++)
             {
-                for (int i = CurrentLenght; i >= 0; i--)
+                temp = r.Next(min, max + 1);
+                for (int j = 0; j < CurrentLenght; j++)
                 {
-                    temp = random.Next(min, max + 1);
-                    if (temp > array[i])
+                    if (temp < array[j])
                     {
-                        for (int j = CurrentLenght; j > i; j--)
+                        for (int k = CurrentLenght; k >= j; k--)
                         {
-                            array[j] = array[j+1];
+                            array[k] = array[k + 1];
                         }
-                        array[i] = temp;
-                        i = -1;
+                        j = CurrentLenght;
                     }
                 }
                 CurrentLenght++;
-            }
 
-            return 0;
+            }
         }
 
 
@@ -128,6 +127,9 @@ namespace Aggiunta_Array_e_funzioni
                         max = int.Parse(Console.ReadLine());
                         Console.WriteLine("inserire minimo");
                         min = int.Parse(Console.ReadLine());
+
+                        
+
                         CaricamentoOrdinato(ref array, lenght, max, min);
                         break;
                 }
